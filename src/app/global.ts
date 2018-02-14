@@ -1,4 +1,6 @@
 export const header = '';
+export const live_url = 'http://coinlisting.io/';
+export const test_url = 'http://localhost:4200/';
 export const base_url = 'http://localhost:4417/';
 export const api_url = 'http://api.coinlisting.io:3000/v1/';
 
@@ -12,6 +14,8 @@ export const categorylistAPI = 'categorylist';
 export const supportlistAPI = 'supportlist';
 export const messagelistAPI = 'messagelist';
 export const singlemessageAPI = 'singlemessage';
+export const seolistAPI = 'seolist';
+export const getseoupdatedataAPI = 'getseoupdatedata';
 
 // export const getcoinupdatedataAPI = 'getcoinupdatedata';
 export const coinupdatedataAPI = 'coinupdatedata';
@@ -21,6 +25,8 @@ export const getsupportupdatedataAPI = 'getsupportupdatedata';
 export const deletesupportdataAPI = 'deletesupportdata';
 export const updatesinglemessageAPI = 'updatesinglemessage';
 export const deletemessageAPI = 'deletemessage';
+export const addupdateseodataAPI = 'addupdateseodata';
+export const deleteseometaAPI = 'deleteseometa';
 
 export const login_ses = localStorage.getItem('login_ses');
 export const userid = localStorage.getItem('id');

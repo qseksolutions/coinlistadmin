@@ -18,6 +18,7 @@ import { CoinComponent } from './coin/coin.component';
 import { UpdateComponent } from './update/update.component';
 import { SupportComponent } from './support/support.component';
 import { MessageComponent } from './message/message.component';
+import { SeoComponent } from './seo/seo.component';
 
 
 @NgModule({
@@ -48,6 +49,11 @@ import { MessageComponent } from './message/message.component';
         component: MessageComponent,
         pathMatch: 'full'
       },
+      {
+        path: 'seo',
+        component: SeoComponent,
+        pathMatch: 'full'
+      },
     ]),
     BrowserModule,
     CommonModule,
@@ -67,6 +73,7 @@ import { MessageComponent } from './message/message.component';
     UpdateComponent,
     SupportComponent,
     MessageComponent,
+    SeoComponent,
   ],
   providers: [],
   bootstrap:    [ AppComponent ]

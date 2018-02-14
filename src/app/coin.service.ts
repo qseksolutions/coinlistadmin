@@ -7,6 +7,8 @@ import { URLSearchParams } from '@angular/http';
 @Injectable()
 export class CoinService {
 
+  urlString: any = myGlobals.base_url;
+  live_url: any = myGlobals.live_url;
   api_url: any = myGlobals.api_url;
 
   getallcoinlistAPI: any = myGlobals.getallcoinlistAPI;
@@ -19,6 +21,8 @@ export class CoinService {
   supportlistAPI: any = myGlobals.supportlistAPI;
   messagelistAPI: any = myGlobals.messagelistAPI;
   singlemessageAPI: any = myGlobals.singlemessageAPI;
+  seolistAPI: any = myGlobals.seolistAPI;
+  getseoupdatedataAPI: any = myGlobals.getseoupdatedataAPI;
 
   // getcoinupdatedataAPI: any = myGlobals.getcoinupdatedataAPI;
   coinupdatedataAPI: any = myGlobals.coinupdatedataAPI;
@@ -28,6 +32,8 @@ export class CoinService {
   deletesupportdataAPI: any = myGlobals.deletesupportdataAPI;
   updatesinglemessageAPI: any = myGlobals.updatesinglemessageAPI;
   deletemessageAPI: any = myGlobals.deletemessageAPI;
+  addupdateseodataAPI: any = myGlobals.addupdateseodataAPI;
+  deleteseometaAPI: any = myGlobals.deleteseometaAPI;
 
   userid: any = myGlobals.userid;
   basecur: any = localStorage.getItem('base');
@@ -163,6 +169,25 @@ export class CoinService {
       .map((response: Response) => response.json());
   }
 
+  seolist() {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.api_url + this.seolistAPI, options)
+      .map((response: Response) => response.json());
+  }
+
+  getseoupdatedata(id) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('seo_id', id);
+
+    return this.http.post(this.api_url + this.getseoupdatedataAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
   supportupdatedata(id) {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
@@ -208,6 +233,37 @@ export class CoinService {
     form.append('message_id', id);
 
     return this.http.post(this.api_url + this.deletemessageAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  addupdateseodata(seo) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('url', seo.url);
+    form.append('test_url', seo.test_url);
+    form.append('title', seo.title);
+    form.append('description', seo.description);
+    form.append('keywords', seo.keywords);
+    if (seo.seo_id !== '') {
+      form.append('seo_id', seo.seo_id);
+    } else {
+      form.append('seo_id', '');
+    }
+
+    return this.http.post(this.api_url + this.addupdateseodataAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  deleteseometa(id) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('seo_id', id);
+
+    return this.http.post(this.api_url + this.deleteseometaAPI, form, options)
       .map((response: Response) => response.json());
   }
 }
