@@ -23,6 +23,9 @@ export class CoinService {
   singlemessageAPI: any = myGlobals.singlemessageAPI;
   seolistAPI: any = myGlobals.seolistAPI;
   getseoupdatedataAPI: any = myGlobals.getseoupdatedataAPI;
+  advertiseplacelistAPI: any = myGlobals.advertiseplacelistAPI;
+  addupdatenewadvertiseAPI: any = myGlobals.addupdatenewadvertiseAPI;
+  advertiselistAPI: any = myGlobals.advertiselistAPI;
 
   // getcoinupdatedataAPI: any = myGlobals.getcoinupdatedataAPI;
   coinupdatedataAPI: any = myGlobals.coinupdatedataAPI;
@@ -34,6 +37,7 @@ export class CoinService {
   deletemessageAPI: any = myGlobals.deletemessageAPI;
   addupdateseodataAPI: any = myGlobals.addupdateseodataAPI;
   deleteseometaAPI: any = myGlobals.deleteseometaAPI;
+  addnewadvertiseplaceAPI: any = myGlobals.addnewadvertiseplaceAPI;
 
   userid: any = myGlobals.userid;
   basecur: any = localStorage.getItem('base');
@@ -188,6 +192,40 @@ export class CoinService {
       .map((response: Response) => response.json());
   }
 
+  advertiseplacelist() {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.api_url + this.advertiseplacelistAPI, options)
+    .map((response: Response) => response.json());
+  }
+
+  addupdatenewadvertise(add) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('cat_id', add.catid);
+    form.append('deafult', add.deafult);
+    form.append('custom', add.custom);
+    if (add.add_id === '') {
+      form.append('add_id', '');
+    } else {
+      form.append('add_id', add.add_id);
+    }
+
+    return this.http.post(this.api_url + this.addupdatenewadvertiseAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  advertiselist() {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    return this.http.get(this.api_url + this.advertiselistAPI, options)
+      .map((response: Response) => response.json());
+  }
+
   supportupdatedata(id) {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
@@ -264,6 +302,17 @@ export class CoinService {
     form.append('seo_id', id);
 
     return this.http.post(this.api_url + this.deleteseometaAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  addnewadvertiseplace(name) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('name', name);
+
+    return this.http.post(this.api_url + this.addnewadvertiseplaceAPI, form, options)
       .map((response: Response) => response.json());
   }
 }

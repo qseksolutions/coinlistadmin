@@ -16,6 +16,8 @@ export const messagelistAPI = 'messagelist';
 export const singlemessageAPI = 'singlemessage';
 export const seolistAPI = 'seolist';
 export const getseoupdatedataAPI = 'getseoupdatedata';
+export const advertiseplacelistAPI = 'advertiseplacelist';
+export const advertiselistAPI = 'advertiselist';
 
 // export const getcoinupdatedataAPI = 'getcoinupdatedata';
 export const coinupdatedataAPI = 'coinupdatedata';
@@ -27,6 +29,8 @@ export const updatesinglemessageAPI = 'updatesinglemessage';
 export const deletemessageAPI = 'deletemessage';
 export const addupdateseodataAPI = 'addupdateseodata';
 export const deleteseometaAPI = 'deleteseometa';
+export const addnewadvertiseplaceAPI = 'addnewadvertiseplace';
+export const addupdatenewadvertiseAPI = 'addupdatenewadvertise';
 
 export const login_ses = localStorage.getItem('login_ses');
 export const userid = localStorage.getItem('id');

@@ -66,7 +66,7 @@ export class SupportComponent implements OnInit {
 
   onSubmitaddCategory() {
     if (this.category === '') {
-      this.toasterService.pop('error', 'Error', 'Please enter rank');
+      this.toasterService.pop('error', 'Error', 'Please enter category');
     } else {
       this.coinservice.addnewcategory(this.category).subscribe(resData => {
         if (resData.status === true) {
