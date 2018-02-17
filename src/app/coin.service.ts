@@ -26,6 +26,7 @@ export class CoinService {
   advertiseplacelistAPI: any = myGlobals.advertiseplacelistAPI;
   addupdatenewadvertiseAPI: any = myGlobals.addupdatenewadvertiseAPI;
   advertiselistAPI: any = myGlobals.advertiselistAPI;
+  getadvertiseupdatedataAPI: any = myGlobals.getadvertiseupdatedataAPI;
 
   // getcoinupdatedataAPI: any = myGlobals.getcoinupdatedataAPI;
   coinupdatedataAPI: any = myGlobals.coinupdatedataAPI;
@@ -38,6 +39,7 @@ export class CoinService {
   addupdateseodataAPI: any = myGlobals.addupdateseodataAPI;
   deleteseometaAPI: any = myGlobals.deleteseometaAPI;
   addnewadvertiseplaceAPI: any = myGlobals.addnewadvertiseplaceAPI;
+  deleteadvertisedataAPI: any = myGlobals.deleteadvertisedataAPI;
 
   userid: any = myGlobals.userid;
   basecur: any = localStorage.getItem('base');
@@ -226,6 +228,17 @@ export class CoinService {
       .map((response: Response) => response.json());
   }
 
+  getadvertiseupdatedata(id) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('add_id', id);
+
+    return this.http.post(this.api_url + this.getadvertiseupdatedataAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
   supportupdatedata(id) {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     const options = new RequestOptions({ headers: headers });
@@ -313,6 +326,17 @@ export class CoinService {
     form.append('name', name);
 
     return this.http.post(this.api_url + this.addnewadvertiseplaceAPI, form, options)
+      .map((response: Response) => response.json());
+  }
+
+  deleteadvertisedata(id) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('add_id', id);
+
+    return this.http.post(this.api_url + this.deleteadvertisedataAPI, form, options)
       .map((response: Response) => response.json());
   }
 }

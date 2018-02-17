@@ -55,11 +55,11 @@ export class AdvertiseComponent implements OnInit {
 
   addadvertise() {
     this.aid = 0;
-    $('#support_id').val('');
+    $('#add_id').val('');
     $('#catid').val('');
     $('#deafult').val('');
     $('#custom').val('');
-    $('#addquestionmodal').modal('toggle');
+    $('#addadvertisemodal').modal('toggle');
   }
 
   addcategory() {
@@ -108,12 +108,12 @@ export class AdvertiseComponent implements OnInit {
           } else {
             this.toasterService.pop('error', 'Error', 'Something went wrong please try after sometime !');
           }
-          /* $('#addlist').DataTable().destroy();
+          $('#addlist').DataTable().destroy();
           this.ngOnInit();
           setTimeout(() => {
-            $('#addquestionmodal').modal('toggle');
+            $('#addadvertisemodal').modal('toggle');
             //  location.reload();
-          }, 1000); */
+          }, 1000);
         } else {
           this.toasterService.pop('error', 'Error', resData.message);
         }
@@ -121,4 +121,29 @@ export class AdvertiseComponent implements OnInit {
     }
   }
 
+  updateadvertise(id) {
+    this.coinservice.getadvertiseupdatedata(id).subscribe(resData => {
+      if (resData.status === true) {
+        this.aid = resData.data.id;
+        $('#add_id').val(resData.data.id);
+        $('#catid').val(resData.data.aid);
+        $('#deafult').val(resData.data.default_ad);
+        $('#custom').val(resData.data.custom_ad);
+        $('#addadvertisemodal').modal('toggle');
+      } else {
+      }
+    });
+  }
+
+  deleteadvertise(id) {
+    this.coinservice.deleteadvertisedata(id).subscribe(resData => {
+      if (resData.status === true) {
+        this.toasterService.pop('success', 'Success', resData.message);
+        $('#addlist').DataTable().destroy();
+        this.ngOnInit();
+      } else {
+        this.toasterService.pop('error', 'Error', resData.message);
+      }
+    });
+  }
 }

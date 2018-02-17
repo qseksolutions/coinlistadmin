@@ -18,6 +18,7 @@ export const seolistAPI = 'seolist';
 export const getseoupdatedataAPI = 'getseoupdatedata';
 export const advertiseplacelistAPI = 'advertiseplacelist';
 export const advertiselistAPI = 'advertiselist';
+export const getadvertiseupdatedataAPI = 'getadvertiseupdatedata';
 
 // export const getcoinupdatedataAPI = 'getcoinupdatedata';
 export const coinupdatedataAPI = 'coinupdatedata';
@@ -31,6 +32,7 @@ export const addupdateseodataAPI = 'addupdateseodata';
 export const deleteseometaAPI = 'deleteseometa';
 export const addnewadvertiseplaceAPI = 'addnewadvertiseplace';
 export const addupdatenewadvertiseAPI = 'addupdatenewadvertise';
+export const deleteadvertisedataAPI = 'deleteadvertisedata';
 
 export const login_ses = localStorage.getItem('login_ses');
 export const userid = localStorage.getItem('id');

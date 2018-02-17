@@ -51,10 +51,10 @@
                   <span *ngIf="add.status == 0" class="label label-danger">Inactive</span>
                 </td>
                 <td class="text-center">
-                  <a class="mr-10" href="javascript:;" (click)="updatesupport(add.id)">
+                  <a class="mr-10" href="javascript:;" (click)="updateadvertise(add.id)">
                     <i class="fa fa-edit"></i>
                   </a>
-                  <a href="javascript:;" (click)="deletesupport(add.id)">
+                  <a href="javascript:;" (click)="deleteadvertise(add.id)">
                     <i class="fa fa-times red"></i>
                   </a>
                 </td>
@@ -101,7 +101,7 @@
 </div>
 
 <!-- ADD ADVERTISE MODAL -->
-<div id="addquestionmodal" class="modal fade" role="dialog">
+<div id="addadvertisemodal" class="modal fade" role="dialog">
   <!-- <div class="modal-dialog modal-lg"> -->
   <div class="modal-dialog">
 
