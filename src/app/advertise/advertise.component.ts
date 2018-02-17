@@ -96,10 +96,6 @@ export class AdvertiseComponent implements OnInit {
     this.add.custom = $('#custom').val();
     if (this.add.catid === '') {
       this.toasterService.pop('error', 'Error', 'Please select category');
-    } else if (this.add.deafult === '') {
-      this.toasterService.pop('error', 'Error', 'Please enter deafult advertise');
-    } else if (this.add.custom === '') {
-      this.toasterService.pop('error', 'Error', 'Please enter custom advertise');
     } else {
       this.coinservice.addupdatenewadvertise(this.add).subscribe(resData => {
         if (resData.status === true) {

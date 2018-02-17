@@ -41,11 +41,14 @@
               <tr *ngFor="let add of advertise; let i = index">
                 <td>{{i+1}}</td>
                 <td>{{add.name}}</td>
-                <td>{{add.default_ad}}</td>
-                <td>{{add.custom_ad}}</td>
-                <!-- <td>
-                  <p [innerHtml]="add.answer"></p>
-                </td> -->
+                <!-- <td>{{add.default_ad}}</td>
+                <td>{{add.custom_ad}}</td> -->
+                <td>
+                  <p [innerHtml]="add.default_ad"></p>
+                </td>
+                <td>
+                  <p [innerHtml]="add.custom_ad"></p>
+                </td>
                 <td>
                   <span *ngIf="add.status == 1" class="label label-success">Active</span>
                   <span *ngIf="add.status == 0" class="label label-danger">Inactive</span>

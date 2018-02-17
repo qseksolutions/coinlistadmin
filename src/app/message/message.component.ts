@@ -74,7 +74,7 @@ export class MessageComponent implements OnInit {
     });
   }
 
-  onSubmitAnswer(id) {
+  onSubmitAnswer() {
     this.msg.message_id = $('#message_id').val();
     this.msg.name = $('#name').val();
     this.msg.email = $('#email').val();
