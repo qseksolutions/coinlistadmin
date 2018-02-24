@@ -19,6 +19,7 @@
     "highcharts": "^6.0.4",
     "ng2-ckeditor": "^1.1.14",
     "rxjs": "5.5.2",
+    "typescript-tools": "^0.3.1",
     "zone.js": "0.8.18"
   },
   "version": "0.0.0",
