@@ -1,8 +1,8 @@
 export const header = '';
-export const live_url = 'http://coinlisting.io/';
+export const live_url = 'https://coinlisting.io/';
 export const test_url = 'http://localhost:4200/';
 export const base_url = 'http://localhost:4417/';
-export const api_url = 'http://api.coinlisting.io:3000/v1/';
+export const api_url = 'https://api.coinlisting.io:3000/v1/';
 
 export const getallcoinlistAPI = 'getallcoinlist';
 export const getallcoinlistdemoAPI = 'getallcoinlistdemo';
