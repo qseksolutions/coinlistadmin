@@ -4,6 +4,8 @@ import { CoinService } from '../coin.service';
 import * as myGlobals from './../global';
 import { ToasterContainerComponent, ToasterService, ToasterConfig } from 'angular2-toaster';
 
+declare var $;
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -22,11 +24,15 @@ export class HeaderComponent implements OnInit {
   });
 
   public urlString: any = myGlobals.base_url;
+  public login_ses: any = myGlobals.login_ses;
   url: any;
 
   // tslint:disable-next-line:max-line-length
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService) {
     this.toasterService = toasterService;
+    if (this.login_ses == null || this.login_ses === '') {
+      window.location.href = this.urlString + 'login';
+    }
   }
 
   ngOnInit() {
@@ -37,5 +43,10 @@ export class HeaderComponent implements OnInit {
     } else {
       this.url = 'home';
     }
+  }
+
+  destroyUser() {
+    localStorage.clear();
+    location.href = this.urlString + 'login' ;
   }
 }

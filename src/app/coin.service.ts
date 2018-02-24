@@ -29,6 +29,7 @@ export class CoinService {
   getadvertiseupdatedataAPI: any = myGlobals.getadvertiseupdatedataAPI;
 
   // getcoinupdatedataAPI: any = myGlobals.getcoinupdatedataAPI;
+  loginAPI: any = myGlobals.loginAPI;
   coinupdatedataAPI: any = myGlobals.coinupdatedataAPI;
   addnewcategoryAPI: any = myGlobals.addnewcategoryAPI;
   addupdatenewquestionAPI: any = myGlobals.addupdatenewquestionAPI;
@@ -98,6 +99,19 @@ export class CoinService {
     return this.http.post(this.api_url + this.getcoinupdatedataAPI, form, options)
       .map((response: Response) => response.json());
   } */
+
+  loginuserdata(login) {
+    const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    const options = new RequestOptions({ headers: headers });
+
+    const form = new URLSearchParams();
+    form.append('email', login.email);
+    form.append('password', login.password);
+    form.append('role', 'admin');
+
+    return this.http.post(this.api_url + this.loginAPI, form, options)
+      .map((response: Response) => response.json());
+  }
 
   updatecoindata(coin) {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });

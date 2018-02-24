@@ -18,6 +18,7 @@ export class SupportComponent implements OnInit {
   private toasterService: ToasterService;
 
   public urlString: any = myGlobals.base_url;
+  token: any = localStorage.getItem('token');
   allcategory: any;
   allquestion: any;
   sid: any = 0;
@@ -31,9 +32,24 @@ export class SupportComponent implements OnInit {
 
   constructor(private coinservice: CoinService, private router: Router, toasterService: ToasterService) {
     this.toasterService = toasterService;
+    alert(this.token);
   }
 
   ngOnInit() {
+    /* const email = this.useremail;
+    const emailkey = btoa(email);
+    console.log(emailkey);
+    const enconde = '8b7dc070cab7-e63533e5-' + emailkey + '-c965f64d-5307';
+    console.log(enconde);
+    const encondekey = btoa(enconde);
+    console.log(encondekey);
+    const decodekey = atob(encondekey);
+    console.log('dc' + decodekey);
+    const decode = decodekey.split('-');
+    console.log('dc' + decode);
+    const emaildc = atob(decode[2]);
+    console.log('dc' + emaildc); */
+
     this.coinservice.questionlist().subscribe(resData => {
       if (resData.status === true) {
         this.allquestion = resData.data;

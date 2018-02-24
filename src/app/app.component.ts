@@ -19,6 +19,7 @@ export class AppComponent {
     });
 
   showHeader: any;
+  showcount: any = 0;
   public location = '';
 
   constructor(private router: Router, toasterService: ToasterService) {
@@ -34,9 +35,7 @@ export class AppComponent {
     if (location.url === '/login' || location.url === '/signup' || location.url === '/list') {
       this.showHeader = false;
     } else {
-      setTimeout(() => {
-        this.showHeader = true;
-      }, 2500);
+      this.showHeader = true;
     }
   }
 }

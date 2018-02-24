@@ -20,6 +20,7 @@ import { SupportComponent } from './support/support.component';
 import { MessageComponent } from './message/message.component';
 import { SeoComponent } from './seo/seo.component';
 import { AdvertiseComponent } from './advertise/advertise.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -60,6 +61,11 @@ import { AdvertiseComponent } from './advertise/advertise.component';
         component: AdvertiseComponent,
         pathMatch: 'full'
       },
+      {
+        path: 'login',
+        component: LoginComponent,
+        pathMatch: 'full'
+      },
     ]),
     BrowserModule,
     CommonModule,
@@ -81,6 +87,7 @@ import { AdvertiseComponent } from './advertise/advertise.component';
     MessageComponent,
     SeoComponent,
     AdvertiseComponent,
+    LoginComponent,
   ],
   providers: [],
   bootstrap:    [ AppComponent ]
