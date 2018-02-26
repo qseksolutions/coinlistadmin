@@ -46,8 +46,13 @@ export class CoinService {
   basecur: any = localStorage.getItem('base');
   user_base: any = localStorage.getItem('user_base');
   base_sing: any = localStorage.getItem('base_sing');
+  token: any = localStorage.getItem('token');
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+    if (this.token == null) {
+      this.token = '';
+    }
+  }
 
   getallcoin() {
     const headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
@@ -131,6 +136,7 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('cat_name', category);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.addnewcategoryAPI, form, options)
       .map((response: Response) => response.json());
@@ -157,6 +163,7 @@ export class CoinService {
     form.append('cat_id', qus.catid);
     form.append('question', qus.question);
     form.append('answer', qus.answer);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.addupdatenewquestionAPI, form, options)
       .map((response: Response) => response.json());
@@ -184,6 +191,7 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('message_id', id);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.singlemessageAPI, form, options)
       .map((response: Response) => response.json());
@@ -203,6 +211,7 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('seo_id', id);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.getseoupdatedataAPI, form, options)
       .map((response: Response) => response.json());
@@ -229,6 +238,7 @@ export class CoinService {
     } else {
       form.append('add_id', add.add_id);
     }
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.addupdatenewadvertiseAPI, form, options)
       .map((response: Response) => response.json());
@@ -248,6 +258,7 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('add_id', id);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.getadvertiseupdatedataAPI, form, options)
       .map((response: Response) => response.json());
@@ -259,6 +270,7 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('support_id', id);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.getsupportupdatedataAPI, form, options)
       .map((response: Response) => response.json());
@@ -270,6 +282,7 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('support_id', id);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.deletesupportdataAPI, form, options)
       .map((response: Response) => response.json());
@@ -285,6 +298,7 @@ export class CoinService {
     form.append('email', msg.email);
     form.append('answer', msg.answer);
     form.append('status', '2');
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.updatesinglemessageAPI, form, options)
       .map((response: Response) => response.json());
@@ -296,6 +310,7 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('message_id', id);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.deletemessageAPI, form, options)
       .map((response: Response) => response.json());
@@ -316,6 +331,7 @@ export class CoinService {
     } else {
       form.append('seo_id', '');
     }
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.addupdateseodataAPI, form, options)
       .map((response: Response) => response.json());
@@ -327,6 +343,7 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('seo_id', id);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.deleteseometaAPI, form, options)
       .map((response: Response) => response.json());
@@ -338,6 +355,7 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('name', name);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.addnewadvertiseplaceAPI, form, options)
       .map((response: Response) => response.json());
@@ -349,6 +367,7 @@ export class CoinService {
 
     const form = new URLSearchParams();
     form.append('add_id', id);
+    form.append('token', this.token);
 
     return this.http.post(this.api_url + this.deleteadvertisedataAPI, form, options)
       .map((response: Response) => response.json());
